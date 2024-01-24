@@ -1,0 +1,6 @@
+ls
+gcc file.c
+ls
+gcc file.c
+ls
+./a.out
