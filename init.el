@@ -1,0 +1,24 @@
+(require 'package)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes '(leuven-dark))
+ '(package-archives
+   '(("gnu" . "https://elpa.gnu.org/packages/")
+     ("melpa" . "https://melpa.org/packages/")))
+ '(package-selected-packages '(haskell-mode)))
+(package-initialize)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+(let ((my-ghcup-path (expand-file-name "~/.ghcup/bin")))
+  (setenv "PATH" (concat my-ghcup-path ":" (getenv "PATH")))
+  (add-to-list 'exec-path my-ghcup-path))
+(setq ns-alternate-modifier 'meta)
+(setq ns-right-alternate-modifier 'none)
+(set-face-attribute 'default nil :font "Monaco" :height 180)
