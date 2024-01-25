@@ -28,11 +28,11 @@
 ;; disable alternate modifier on right option key
 ;; useful for keep using [,],@,{ and so on..
 (setq ns-right-alternate-modifier 'none)
-;; disable menu on startup
-(tool-bar-mode -1)
 ;; enables electric pair mode
 (electric-pair-mode 1)
 ;; adds custome themes from my folder
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+;; disable menu on startup
+(tool-bar-mode -1)
 ;; aesthetics
 (set-face-attribute 'default nil :font "Monaco" :height 180)
