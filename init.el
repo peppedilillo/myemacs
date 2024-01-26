@@ -25,6 +25,9 @@
       c-basic-offset 4)
 ;; set alternate modifier to option key on max
 (setq ns-alternate-modifier 'meta)
+;; save backup autosave file to .emacs.d folder
+(setq backup-directory-alist
+      `(("." . ,(concat user-emacs-directory "backups"))))
 ;; disable alternate modifier on right option key
 ;; useful for keep using [,],@,{ and so on..
 (setq ns-right-alternate-modifier 'none)

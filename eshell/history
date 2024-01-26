@@ -4,3 +4,5 @@ ls
 gcc file.c
 ls
 ./a.out
+git status
+git status
