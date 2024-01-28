@@ -2,7 +2,6 @@
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(leuven-dark))
  '(package-archives
@@ -10,12 +9,6 @@
      ("melpa" . "https://melpa.org/packages/")))
  '(package-selected-packages '(haskell-mode)))
 (package-initialize)
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
 ;; haskel ghcup path so that haskell mode can see it
 (let ((my-ghcup-path (expand-file-name "~/.ghcup/bin")))
   (setenv "PATH" (concat my-ghcup-path ":" (getenv "PATH")))
@@ -25,9 +18,9 @@
       c-basic-offset 4)
 ;; set alternate modifier to option key on max
 (setq ns-alternate-modifier 'meta)
-;; save backup autosave file to .emacs.d folder
-(setq backup-directory-alist
-      `(("." . ,(concat user-emacs-directory "backups"))))
+;; save backup autosave file to .emacs.d folder copying them
+(setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
+(setq backup-by-copying t)
 ;; disable alternate modifier on right option key
 ;; useful for keep using [,],@,{ and so on..
 (setq ns-right-alternate-modifier 'none)

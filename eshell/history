@@ -6,3 +6,19 @@ ls
 ./a.out
 git status
 git status
+ls
+rm init.el~
+ls
+ls
+cp gruber-darker gruber-darker.el
+rm gruber-darker
+ls
+rm dracula-theme.el~
+ls
+ls
+cd .emacs
+ls
+cd .emacs.d
+ls
+cd themes
+ls
