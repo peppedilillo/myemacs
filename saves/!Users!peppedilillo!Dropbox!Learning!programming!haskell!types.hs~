@@ -1,0 +1,19 @@
+-- haskel is statically typed. to see the type on expression
+-- you use the `:t` operator like in `:t "HELLO"` which returns
+-- "HELLO" :: String
+-- it is a good practice to mark the type of functions, e.g.:
+-- note we using [Char] because its synonymous for String
+removeUpperChars :: [Char] -> [Char]
+removeUpperChars st = [s | s<-st, s `elem` ['a'..'z']]
+-- to declare the type of a function taking multiple parameters
+-- you do like this (currying):
+addThree :: Int -> Int -> Int -> Int
+addThree x y z = x + y + z
+-- one can write a function and check for its typing with :t
+-- curiously there is a distinction between types `int` and `Integer`
+-- `Integepr` can hold arbitrarily large integers, while `int` is capped.
+-- there are `float` and `double`.
+-- VARIABLE TYPES. the function head has a curious typing:
+-- head :: [a] -> a
+-- what is `a`? It is a type variable. A function using type variables
+-- is said to be `polymorphic`.

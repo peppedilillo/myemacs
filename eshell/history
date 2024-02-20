@@ -1,18 +1,3 @@
-ls
-gcc file.c
-ls
-gcc file.c
-ls
-./a.out
-git status
-git status
-ls
-rm init.el~
-ls
-ls
-cp gruber-darker gruber-darker.el
-rm gruber-darker
-ls
 rm dracula-theme.el~
 ls
 ls
@@ -21,4 +6,123 @@ ls
 cd .emacs.d
 ls
 cd themes
+ls
+ls
+cd .emacs.d/
+ls
+git status
+git diff
+git diff init.el 
+git add .
+git commit -m "removed a custom-set-face that seems to do nothing"
+git status
+ls
+cd auto-save-list/
+ls
+ls
+cd .emacs.d/
+ls
+cd themes/
+ls
+rm solarized-theme.el 
+ls
+cd ..
+cd Dropbox/
+ls
+cd Progetti/
+ls
+cd mes
+cd mescal
+ls
+cd mescal
+ls
+git
+git status
+ls
+cd hbstools/
+ls
+cd ..
+git status
+ls
+cd hbstools/
+git status
+cd mercury
+cd Dropbox/
+ls
+cd Progetti/hbstools/
+ls
+cd hbstools/
+ls
+cd mercury/
+ls
+cd ..
+ls
+cd ..
+ls
+cd hbstools/
+ls
+cd hbstools/
+ls
+ls
+cd ..
+cd ~
+ls
+cd .emacs.d/ini
+cd .emacs.d/
+ls
+cd themes/
+ls
+rm tokyo-theme.el 
+rm dracula-theme.el 
+ls
+cd ..
+ls
+cd themes/
+ls
+ls
+cd ..
+cd ~
+ls
+cd Dropbox/
+ls
+cd Progetti/
+ls
+cd hbstools/
+ls hbstools/
+cd mer
+ls
+cd hbs
+ls
+cd hbstools/
+ls
+cd mercury/
+ls
+ls
+cd ..
+ls
+ls
+cd Dropbox/
+ls
+cd Progetti/
+ls
+cd meson-test/
+ls
+rm -rd test3
+ls
+git status
+ls
+cd Dropbox/
+ls
+cd Progetti/
+ls
+cd hbstools/
+ls
+cd hbstools
+ls
+ls
+cd Dropbox/Progetti/hbstools/
+ls
+ls
+ls
+rm \#manegarm-theme.el\# 
 ls
