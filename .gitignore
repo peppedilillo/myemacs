@@ -1,2 +1,6 @@
-backups/
-eshell/history/
+backups
+eshell
+elpa
+saves
+auto-save-list
+*~
