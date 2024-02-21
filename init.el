@@ -12,7 +12,7 @@
 (tool-bar-mode -1)
 
 ;; load custom splash screen
-(load "~/.emacs.d/splash-screen.el")
+(load "~/.emacs.d/loads/splash-screen.el")
 (require 'splash-screen)
 
 ;; or if you grow tired, this disables the splash screen

@@ -69,9 +69,6 @@
   
   (interactive)
   (let* ((splash-buffer  (get-buffer-create "*splash*"))
-         (recover-session (and auto-save-list-file-prefix
-                               (file-directory-p (file-name-directory
-                                                  auto-save-list-file-prefix))))
          (height         (- (window-body-height nil) 1))
          (width          (window-body-width nil))
          (padding-center (- (/ height 2) 1))
@@ -116,16 +113,6 @@
           ;; Vertical padding to bottom
           (insert-char ?\n padding-bottom)
 
-          ;; ;; Recover session button
-          ;; (when recover-session
-          ;;   (delete-char -2)
-          ;;   (insert-text-button " [Recover session] "
-          ;;        'action (lambda (_) (call-interactively 'recover-session))
-          ;;          'help-echo "Recover previous session"
-          ;;          'face 'warning
-          ;;          'follow-link t)
-          ;;   (center-line) (insert "\n") (insert "\n"))
-
           ;; Copyright text
           (insert (propertize
                    "GNU Emacs comes with ABSOLUTELY NO WARRANTY" 'face 'shadow))
@@ -137,57 +124,7 @@
           (goto-char 0)
           (read-only-mode t)
           
-          ;; (local-set-key [t]               'splash-screen-fade-to-about)
-          ;; (local-set-key (kbd "C-[")       'splash-screen-fade-to-default)
-          ;; (local-set-key (kbd "<escape>")  'splash-screen-fade-to-default)
-          ;; (local-set-key (kbd "q")         'splash-screen-fade-to-default)
-          ;; (local-set-key (kbd "<mouse-1>") 'mouse-set-point)
-          ;; (local-set-key (kbd "<mouse-2>") 'operate-this-button)
-          ;; (local-set-key " "               'splash-screen-fade-to-default)
-          ;; (local-set-key "x"               'splash-screen-fade-to-default)
-          ;; (local-set-key (kbd "<RET>")     'splash-screen-fade-to-default)
-          ;; (local-set-key (kbd "<return>")  'splash-screen-fade-to-default)
-          (display-buffer-same-window splash-buffer nil)
-          ;; (run-with-idle-timer 10.0 nil    'splash-screen-fade-to-about)
-       ))))
-
-
-;; Mac animation, only available from
-;;  https://bitbucket.org/mituharu/emacs-mac/src/master/
-;;  https://github.com/railwaycat/homebrew-emacsmacport
-(defvar mac-animation-locked-p nil)
-(defun mac-animation-toggle-lock ()
-  (setq mac-animation-locked-p (not mac-animation-locked-p)))
-(defun mac-animation-fade-out (duration &rest args)
-  (unless mac-animation-locked-p
-    (mac-animation-toggle-lock)
-    (mac-start-animation nil :type 'fade-out :duration duration)
-    (run-with-timer duration nil 'mac-animation-toggle-lock)))
-
-(defun splash-screen-fade-to (about duration)
-  "Fade out current frame for duration and goes to command-or-bufffer"
-  (interactive)
-  (defalias 'mac-animation-fade-out-local
-    (apply-partially 'mac-animation-fade-out duration))
-  (if (get-buffer "*splash*")
-      (progn (if (and (display-graphic-p) (fboundp 'mac-start-animation))
-                 (advice-add 'set-window-buffer
-                             :before 'mac-animation-fade-out-local))
-             (if about (about-emacs))
-             (kill-buffer "*splash*")
-             (if (and (display-graphic-p) (fboundp 'mac-start-animation))
-                 (advice-remove 'set-window-buffer
-                                'mac-animation-fade-out-local)))))
-(defun splash-screen-fade-to-about ()
-  (interactive) (splash-screen-fade-to 1 1.0))
-(defun splash-screen-fade-to-default ()
-  (interactive) (splash-screen-fade-to nil 0.25))
-
-(defun splash-screen-kill ()
-  "Kill the splash screen buffer (immediately)."
-  (interactive)
-  (if (get-buffer "*splash*")
-        (kill-buffer "*splash*")))
+          (display-buffer-same-window splash-buffer nil)))))
 
 ;; Suppress any startup message in the echo area
 (run-with-idle-timer 0.05 nil (lambda() (message nil)))

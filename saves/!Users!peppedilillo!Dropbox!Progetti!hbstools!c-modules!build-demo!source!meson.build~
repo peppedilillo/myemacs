@@ -1,3 +1,0 @@
-project('demo-build', 'c')
-incdir = include_directories('include')
-library('demo-build', 'focus.c', include_directories=incdir)
