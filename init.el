@@ -27,9 +27,17 @@
 ;; set alternate modifier to option key on max
 (setq ns-alternate-modifier 'meta)
 
-;; save backup autosave file to .emacs.d folder copying them
-(setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
-(setq backup-by-copying t)
+;; backups to backups dir
+(setq backup-directory-alist
+      '(("." . "~/.emacs.d/backups/")))
+
+;; auto-saves to backups dir
+(setq auto-save-file-name-transforms
+      '(("\\`/.*/\\([^/]+\\)\\'" "~/.emacs.d/backups/\\1" t)))
+
+;; lock files to backups dir
+(setq lock-file-name-transforms
+      '(("\\`/.*/\\([^/]+\\)\\'" "~/.emacs.d/backups/\\1" t)))
 
 ;; disable alternate modifier on right option key
 ;; useful for keep using [,],@,{ and so on..
