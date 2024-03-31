@@ -4,7 +4,7 @@
 ;; active packages
 (setq package-selected-packages '(haskell-mode))
 
-;; adds custome themes from my folder
+;; adds custome themes  and loads one
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (load-theme 'gruvbox-dark t)
 
