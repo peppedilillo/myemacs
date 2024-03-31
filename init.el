@@ -2,11 +2,14 @@
 (package-initialize)
 
 ;; active packages
-(setq package-selected-packages '(haskell-mode doom-themes))
+(setq package-selected-packages '(haskell-mode))
+
+;; adds custome themes from my folder
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(load-theme 'gruvbox-dark t)
 
 ;; aesthetics
-(load-theme 'doom-manegarm t)
-(set-face-attribute 'default nil :font "Monaco-14")
+(set-face-attribute 'default nil :font "Monaco-15")
 
 ;; disable context menu on startup
 (tool-bar-mode -1)
@@ -17,9 +20,6 @@
 
 ;; or if you grow tired, this disables the splash screen
 ;; (setq inhibit-startup-screen t)
-
-;; adds custome themes from my folder
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 
 ;; all themes are considered safe
 (setq custom-safe-themes t)
