@@ -8,6 +8,9 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (load-theme 'gruvbox-dark t)
 
+;; all themes are considered safe
+(setq custom-safe-themes t)
+
 ;; aesthetics
 (set-face-attribute 'default nil :font "Monaco-15")
 
@@ -20,9 +23,6 @@
 
 ;; or if you grow tired, this disables the splash screen
 ;; (setq inhibit-startup-screen t)
-
-;; all themes are considered safe
-(setq custom-safe-themes t)
 
 ;; set alternate modifier to option key on max
 (setq ns-alternate-modifier 'meta)
