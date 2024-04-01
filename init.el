@@ -12,7 +12,7 @@
 (setq custom-safe-themes t)
 
 ;; aesthetics
-(set-face-attribute 'default nil :font "Monaco-15")
+(set-face-attribute 'default nil :font "Iosevka-15")
 
 ;; disable context menu on startup
 (tool-bar-mode -1)
