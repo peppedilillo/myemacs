@@ -47,8 +47,7 @@
 (electric-pair-mode 1)
 
 ;; C settings
-(setq c-default-style "linux"
-      c-basic-offset 4)
+(setq c-default-style "linux" c-basic-offset 4)
 
 ;; haskell
 (use-package haskell-mode
