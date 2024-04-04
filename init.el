@@ -15,8 +15,13 @@
 ;; aesthetics
 (set-face-attribute 'default nil :font "Iosevka-15")
 
-;; disable context menu on startup
+;; disables context menubar, toolbar, scrollbar
+(menu-bar-mode -1) 
+(toggle-scroll-bar -1) 
 (tool-bar-mode -1)
+
+;: fuck-offs custom variables to separate file
+(setq custom-file (concat user-emacs-directory "/custom.el"))
 
 ;; load custom splash screen
 (load "~/.emacs.d/loads/splash-screen.el")
@@ -51,6 +56,8 @@
 
 ;; haskell
 (use-package haskell-mode
+  ;; only loads if haskell ghcup is available
+  :if (file-directory-p "~/.ghcup/bin")
   :init
   ;; haskel ghcup path so that haskell mode can see it
   (let ((my-ghcup-path (expand-file-name "~/.ghcup/bin")))
@@ -74,4 +81,3 @@
   (add-to-list 'completion-at-point-functions #'cape-file)
   (add-to-list 'completion-at-point-functions #'cape-keyword)
   (add-to-list 'completion-at-point-functions #'cape-elisp-block))
-

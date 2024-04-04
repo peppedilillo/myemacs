@@ -3,5 +3,7 @@ eshell
 elpa
 saves
 auto-save-list
+eln-cache/
+url/
 *~
 .DS_Store
