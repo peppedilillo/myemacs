@@ -13,7 +13,7 @@
 (setq custom-safe-themes t)
 
 ;; aesthetics
-(set-face-attribute 'default nil :font "Iosevka-15")
+(set-face-attribute 'default nil :font "Iosevka-16")
 
 ;; disables context menubar, toolbar, scrollbar
 (menu-bar-mode -1) 
@@ -81,3 +81,8 @@
   (add-to-list 'completion-at-point-functions #'cape-file)
   (add-to-list 'completion-at-point-functions #'cape-keyword)
   (add-to-list 'completion-at-point-functions #'cape-elisp-block))
+
+
+;; cape autocompletion
+(use-package writeroom-mode
+  :ensure t)
