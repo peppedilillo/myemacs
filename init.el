@@ -82,7 +82,6 @@
   (add-to-list 'completion-at-point-functions #'cape-keyword)
   (add-to-list 'completion-at-point-functions #'cape-elisp-block))
 
-
-;; cape autocompletion
-(use-package writeroom-mode
+;; olivetti write mode
+(use-package olivetti
   :ensure t)
