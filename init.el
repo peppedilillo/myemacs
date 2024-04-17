@@ -84,4 +84,6 @@
 
 ;; olivetti write mode
 (use-package olivetti
-  :ensure t)
+  :ensure t
+  :init
+  (add-hook 'olivetti-mode-hook 'toggle-frame-fullscreen t))
