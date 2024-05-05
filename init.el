@@ -1,3 +1,4 @@
+
 ;; use-package
 (require 'use-package)
 
@@ -13,7 +14,7 @@
 (setq custom-safe-themes t)
 
 ;; aesthetics
-(set-face-attribute 'default nil :font "Iosevka-16")
+(set-face-attribute 'default nil :height 160)
 
 ;; disables context menubar, toolbar, scrollbar
 (menu-bar-mode -1) 
@@ -84,6 +85,4 @@
 
 ;; olivetti write mode
 (use-package olivetti
-  :ensure t
-  :init
-  (add-hook 'olivetti-mode-hook 'toggle-frame-fullscreen t))
+  :ensure t)
