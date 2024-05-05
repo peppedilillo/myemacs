@@ -1,4 +1,3 @@
-
 ;; use-package
 (require 'use-package)
 
