@@ -85,3 +85,7 @@
 ;; olivetti write mode
 (use-package olivetti
   :ensure t)
+
+;; loads machine-specific init file, if present
+(defvar local-custom-file "~/.emacs.d/init_local.el")
+(when (file-exists-p local-custom-file) (load local-custom-file))

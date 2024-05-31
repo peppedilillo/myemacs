@@ -1,9 +1,11 @@
+init_local.el
 backups
 eshell
 elpa
 saves
 auto-save-list
-eln-cache/
-url/
+eln-cache
+pyutils
+url
 *~
 .DS_Store
