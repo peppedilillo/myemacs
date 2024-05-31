@@ -13,7 +13,7 @@
 (setq custom-safe-themes t)
 
 ;; font
-(set-face-attribute 'default nil :font "Iosevka" :height 160)
+(set-face-attribute 'default nil :font "Iosevka" :height 180)
 
 ;; disables context menubar, toolbar, scrollbar
 (menu-bar-mode -1) 
