@@ -12,15 +12,12 @@
 ;; all themes are considered safe
 (setq custom-safe-themes t)
 
-;; font
-(set-face-attribute 'default nil :font "Iosevka" :height 180)
-
-;; automatically enables line numbers
-(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+;; sets font specs
+(set-face-attribute 'default nil :font "Iosevka" :height 160)
 
 ;; disables context menubar, toolbar, scrollbar
-(menu-bar-mode -1) 
-(toggle-scroll-bar -1) 
+(menu-bar-mode -1)
+(toggle-scroll-bar -1)
 (tool-bar-mode -1)
 
 ;: fuck-offs custom variables to separate file
@@ -54,6 +51,9 @@
 ;; enables electric pair mode
 (electric-pair-mode 1)
 
+;; automatically enables line numbers in prog mode
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+
 ;; C settings
 (setq c-default-style "linux" c-basic-offset 4)
 
@@ -66,6 +66,10 @@
   (let ((my-ghcup-path (expand-file-name "~/.ghcup/bin")))
     (setenv "PATH" (concat my-ghcup-path ":" (getenv "PATH")))
     (add-to-list 'exec-path my-ghcup-path)))
+
+;; rust
+(use-package rust-mode
+  :ensure t)
 
 ;; corfu autocompletion
 (use-package corfu

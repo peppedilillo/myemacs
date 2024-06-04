@@ -1,4 +1,5 @@
 init_local.el
+custom.el
 backups
 eshell
 elpa
