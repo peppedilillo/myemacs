@@ -15,6 +15,9 @@
 ;; font
 (set-face-attribute 'default nil :font "Iosevka" :height 180)
 
+;; automatically enables line numbers
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+
 ;; disables context menubar, toolbar, scrollbar
 (menu-bar-mode -1) 
 (toggle-scroll-bar -1) 
