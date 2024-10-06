@@ -7,13 +7,13 @@
 
 ;; adds custome themes  and loads one
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-(load-theme 'gruber-darker t)
+(load-theme 'gruvbox-dark t)
 
 ;; all themes are considered safe
 (setq custom-safe-themes t)
 
 ;; sets font specs
-(set-face-attribute 'default nil :font "Iosevka" :height 160)
+(set-face-attribute 'default nil :font "Departure Mono" :height 110)
 
 ;; disables context menubar, toolbar, scrollbar
 (menu-bar-mode -1)
