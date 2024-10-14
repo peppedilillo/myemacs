@@ -51,6 +51,9 @@
 ;; enables electric pair mode
 (electric-pair-mode 1)
 
+;; default tab length
+(setq-default tab-width 4)
+
 ;; automatically enables line numbers in prog mode
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
