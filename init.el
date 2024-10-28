@@ -20,6 +20,9 @@
 (toggle-scroll-bar -1)
 (tool-bar-mode -1)
 
+;; cua mode
+(cua-mode t)
+
 ;: fuck-offs custom variables to separate file
 (setq custom-file (concat user-emacs-directory "/custom.el"))
 
