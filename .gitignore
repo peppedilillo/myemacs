@@ -9,3 +9,4 @@ eln-cache
 url
 *~
 .DS_Store
+.lsp-session-*

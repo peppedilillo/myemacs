@@ -7,13 +7,13 @@
 
 ;; adds custome themes  and loads one
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-(load-theme 'gruvbox-dark t)
+(load-theme 'dracula t)
 
 ;; all themes are considered safe
 (setq custom-safe-themes t)
 
 ;; sets font specs
-(set-face-attribute 'default nil :font "Departure Mono" :height 110)
+(set-face-attribute 'default nil :height 160)
 
 ;; disables context menubar, toolbar, scrollbar
 (menu-bar-mode -1)
@@ -63,20 +63,6 @@
 ;; C settings
 (setq c-default-style "linux" c-basic-offset 4)
 
-;; haskell
-(use-package haskell-mode
-  ;; only loads if haskell ghcup is available
-  :if (file-directory-p "~/.ghcup/bin")
-  :init
-  ;; haskel ghcup path so that haskell mode can see it
-  (let ((my-ghcup-path (expand-file-name "~/.ghcup/bin")))
-    (setenv "PATH" (concat my-ghcup-path ":" (getenv "PATH")))
-    (add-to-list 'exec-path my-ghcup-path)))
-
-;; rust
-(use-package rust-mode
-  :ensure t)
-
 ;; corfu autocompletion
 (use-package corfu
   :ensure t
@@ -102,3 +88,4 @@
 ;; loads machine-specific init file, if present
 (defvar local-custom-file "~/.emacs.d/init_local.el")
 (when (file-exists-p local-custom-file) (load local-custom-file))
+
