@@ -71,9 +71,6 @@
 ;; automatically enables line numbers in prog mode
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
-;; C settings
-(setq c-default-style "linux" c-basic-offset 4)
-
 ;; olivetti write mode
 (use-package olivetti
   :ensure t)
@@ -82,6 +79,34 @@
 (use-package company
   :ensure t
   :hook (after-init . global-company-mode))
+
+;; C settings
+(setq c-default-style "linux" c-basic-offset 4)
+
+;; python
+(use-package pyvenv
+  :ensure t
+  :config
+  (pyvenv-mode 1))
+
+(use-package anaconda-mode
+  :ensure t
+  :bind (("C-c C-x" . next-error))
+  :config
+  (require 'pyvenv)
+  (add-hook 'python-mode-hook 'anaconda-mode))
+
+(use-package company-anaconda
+  :ensure t
+  :config
+  (eval-after-load "company"
+   '(add-to-list 'company-backends '(company-anaconda :with company-capf))))
+
+(use-package highlight-indent-guides
+  :ensure t
+  :config
+  (add-hook 'python-mode-hook 'highlight-indent-guides-mode)
+  (setq highlight-indent-guides-method 'character))
 
 ;; loads machine-specific init file, if present
 (defvar local-custom-file "~/.emacs.d/init_local.el")
