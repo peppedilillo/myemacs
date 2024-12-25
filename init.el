@@ -7,13 +7,13 @@
 
 ;; adds custome themes  and loads one
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-(load-theme 'dracula t)
+(load-theme 'gruber-darker t)
 
 ;; all themes are considered safe
 (setq custom-safe-themes t)
 
 ;; sets font specs
-(set-face-attribute 'default nil :height 160)
+(set-face-attribute 'default nil :height 140)
 
 ;; disables context menubar, toolbar, scrollbar
 (menu-bar-mode -1)
@@ -25,6 +25,17 @@
 
 ;: fuck-offs custom variables to separate file
 (setq custom-file (concat user-emacs-directory "/custom.el"))
+
+;; disable audio bell
+(setq visible-bell nil
+      ring-bell-function 'double-flash-mode-line)
+(defun double-flash-mode-line ()
+  (let ((flash-sec (/ 1.0 20)))
+    (invert-face 'mode-line)
+    (run-with-timer flash-sec nil #'invert-face 'mode-line)
+    (run-with-timer (* 2 flash-sec) nil #'invert-face 'mode-line)
+    (run-with-timer (* 3 flash-sec) nil #'invert-face 'mode-line)))
+
 
 ;; load custom splash screen
 (load "~/.emacs.d/loads/splash-screen.el")
@@ -63,27 +74,14 @@
 ;; C settings
 (setq c-default-style "linux" c-basic-offset 4)
 
-;; corfu autocompletion
-(use-package corfu
-  :ensure t
-  :custom
-  (corfu-auto t)
-  (corfu-auto-prefix 2)
-  :init
-  (global-corfu-mode))
-
-;; cape autocompletion
-(use-package cape
-  :ensure t
-  :init
-  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
-  (add-to-list 'completion-at-point-functions #'cape-file)
-  (add-to-list 'completion-at-point-functions #'cape-keyword)
-  (add-to-list 'completion-at-point-functions #'cape-elisp-block))
-
 ;; olivetti write mode
 (use-package olivetti
   :ensure t)
+
+;; company completion
+(use-package company
+  :ensure t
+  :hook (after-init . global-company-mode))
 
 ;; loads machine-specific init file, if present
 (defvar local-custom-file "~/.emacs.d/init_local.el")
