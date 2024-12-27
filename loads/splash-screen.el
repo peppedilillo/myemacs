@@ -71,8 +71,8 @@
   (let* ((splash-buffer  (get-buffer-create "*splash*"))
          (height         (- (window-body-height nil) 1))
          (width          (window-body-width nil))
-         (padding-center (- (/ height 2) 1))
-         (padding-bottom (- height (/ height 2) 3)))
+         (padding-center (- (/ height 2) 4))
+         (padding-bottom (- height (/ height 2) 4)))
 
     ;; If there are buffer associated with filenames,
     ;;  we don't show splash screen.
