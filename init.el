@@ -13,12 +13,15 @@
 (setq custom-safe-themes t)
 
 ;; sets font specs
-(set-face-attribute 'default nil :height 140)
+(set-face-attribute 'default nil :height 130)
 
 ;; disables context menubar, toolbar, scrollbar
 (menu-bar-mode -1)
 (toggle-scroll-bar -1)
 (tool-bar-mode -1)
+
+;; pixel level smooth scrolling
+(pixel-scroll-precision-mode 1)
 
 ;; cua mode
 (cua-mode t)
@@ -26,7 +29,7 @@
 ;: fuck-offs custom variables to separate file
 (setq custom-file (concat user-emacs-directory "/custom.el"))
 
-;; disable audio bell
+;; switch audio bell for visual one
 (setq visible-bell nil
       ring-bell-function 'double-flash-mode-line)
 (defun double-flash-mode-line ()
@@ -35,7 +38,6 @@
     (run-with-timer flash-sec nil #'invert-face 'mode-line)
     (run-with-timer (* 2 flash-sec) nil #'invert-face 'mode-line)
     (run-with-timer (* 3 flash-sec) nil #'invert-face 'mode-line)))
-
 
 ;; load custom splash screen
 (load "~/.emacs.d/loads/splash-screen.el")
@@ -55,13 +57,6 @@
 (setq lock-file-name-transforms
       '(("\\`/.*/\\([^/]+\\)\\'" "~/.emacs.d/backups/\\1" t)))
 
-;; set alternate modifier to option key on max
-(setq ns-alternate-modifier 'meta)
-
-;; disable alternate modifier on right option key
-;; useful for keep using on mac [,],@,{ and so on..
-(setq ns-right-alternate-modifier 'none)
-
 ;; enables electric pair mode
 (electric-pair-mode 1)
 
@@ -80,35 +75,7 @@
   :ensure t
   :hook (after-init . global-company-mode))
 
-;; C settings
-(setq c-default-style "linux" c-basic-offset 4)
-
-;; python
-(use-package pyvenv
-  :ensure t
-  :config
-  (pyvenv-mode 1))
-
-(use-package anaconda-mode
-  :ensure t
-  :bind (("C-c C-x" . next-error))
-  :config
-  (require 'pyvenv)
-  (add-hook 'python-mode-hook 'anaconda-mode))
-
-(use-package company-anaconda
-  :ensure t
-  :config
-  (eval-after-load "company"
-   '(add-to-list 'company-backends '(company-anaconda :with company-capf))))
-
-(use-package highlight-indent-guides
-  :ensure t
-  :config
-  (add-hook 'python-mode-hook 'highlight-indent-guides-mode)
-  (setq highlight-indent-guides-method 'character))
-
 ;; loads machine-specific init file, if present
-(defvar local-custom-file "~/.emacs.d/init_mac.el")
-(when (file-exists-p local-custom-file) (load local-custom-file))
+(defvar mac-custom-file "~/.emacs.d/init_mac.el")
+(when (file-exists-p mac-custom-file) (load mac-custom-file))
 
