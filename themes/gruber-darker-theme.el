@@ -94,17 +94,15 @@
    `(cursor ((t (:background ,gruber-darker-yellow))))
    `(default ((t ,(list :foreground gruber-darker-fg
                         :background gruber-darker-bg))))
-   `(fringe ((t ,(list :background nil
-                       :foreground gruber-darker-bg+2))))
+   `(fringe ((t (:foreground ,gruber-darker-bg+2))))
    `(vertical-border ((t ,(list :foreground gruber-darker-bg+2))))
    `(link ((t (:foreground ,gruber-darker-niagara :underline t))))
    `(link-visited ((t (:foreground ,gruber-darker-wisteria :underline t))))
    `(match ((t (:background ,gruber-darker-bg+4))))
    `(shadow ((t (:foreground ,gruber-darker-bg+4))))
    `(minibuffer-prompt ((t (:foreground ,gruber-darker-niagara))))
-   `(region ((t (:background ,gruber-darker-bg+3 :foreground nil))))
-   `(secondary-selection ((t ,(list :background gruber-darker-bg+3
-                                    :foreground nil))))
+   `(region ((t (:background ,gruber-darker-bg+3 :foreground unspecified))))
+   `(secondary-selection ((t (:background ,gruber-darker-bg+3))))
    `(trailing-whitespace ((t ,(list :foreground gruber-darker-black
                                     :background gruber-darker-red))))
    `(tooltip ((t ,(list :background gruber-darker-bg+4
@@ -262,7 +260,7 @@
    `(jabber-activity-personal-face ((t (:foreground ,gruber-darker-yellow :bold t))))
 
    ;; Line Highlighting
-   `(highlight ((t (:background ,gruber-darker-bg+1 :foreground nil))))
+   `(highlight ((t (:background ,gruber-darker-bg+1 :foreground unspecified))))
    `(highlight-current-line-face ((t ,(list :background gruber-darker-bg+1
                                             :foreground nil))))
 
@@ -373,8 +371,8 @@
 
    ;; tab-bar
    `(tab-bar ((t (:background ,gruber-darker-bg+1 :foreground ,gruber-darker-bg+4))))
-   `(tab-bar-tab ((t (:background nil :foreground ,gruber-darker-yellow :weight bold))))
-   `(tab-bar-tab-inactive ((t (:background nil))))
+   `(tab-bar-tab ((t (:background unspecified :foreground ,gruber-darker-yellow :weight bold))))
+   `(tab-bar-tab-inactive ((t (:background unspecified))))
 
    ;; vterm / ansi-term
    `(term-color-black ((t (:foreground ,gruber-darker-bg+3 :background ,gruber-darker-bg+4))))
