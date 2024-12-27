@@ -109,6 +109,6 @@
   (setq highlight-indent-guides-method 'character))
 
 ;; loads machine-specific init file, if present
-(defvar local-custom-file "~/.emacs.d/init_local.el")
+(defvar local-custom-file "~/.emacs.d/init_mac.el")
 (when (file-exists-p local-custom-file) (load local-custom-file))
 
