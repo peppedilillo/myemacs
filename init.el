@@ -37,8 +37,9 @@
 ;; all themes are considered safe
 (setq custom-safe-themes t)
 
-;; pixel level smooth scrolling
-(pixel-scroll-precision-mode 1)
+;; pixel-scroll-precision-mode was not available prior to emacs 29
+(if (not (version< emacs-version "29"))
+  (pixel-scroll-precision-mode 1) nil)
 
 ;: fuck-offs custom variables to separate file
 (setq custom-file (concat user-emacs-directory "/custom.el"))
@@ -108,5 +109,14 @@
 
 ;; loads machine-specific init file, if present
 (defvar mac-custom-file "~/.emacs.d/init_mac.el")
-(when (file-exists-p mac-custom-file) (load mac-custom-file))
+(defvar deb-custom-file "~/.emacs.d/init_deb.el")
+
+(cond
+ ((eq system-type 'darwin)
+  (if (file-exists-p mac-custom-file)
+    (load mac-custom-file)))
+ ((eq system-type 'gnu/linux)
+  (if (file-exists-p deb-custom-file)
+      (load deb-custom-file))))
+
 
