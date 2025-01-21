@@ -5,6 +5,13 @@
 ;; useful for keep using on mac [,],@,{ and so on..
 (setq ns-right-alternate-modifier 'none)
 
+;; LSPs
+(use-package eglot
+  :ensure t
+  :config
+  (add-to-list 'eglot-server-programs '(java-mode . ("jdtls")))
+  (add-to-list 'eglot-server-programs '(python-mode . ("pyright-langserver" "--stdio")))))
+
 ;; python
 (use-package pyvenv
   :ensure t
@@ -18,8 +25,8 @@
   (setq highlight-indent-guides-method 'character))
 
 ;; C
-(setq c-default-style "linux" c-basic-offset 4)
-
+(setq-default c-default-style "linux"
+              c-basic-offset 4)
 ;; haskell
 (use-package haskell-mode
   ;; only loads if haskell ghcup is available
