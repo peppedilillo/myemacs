@@ -10,7 +10,7 @@
   :ensure t
   :config
   (add-to-list 'eglot-server-programs '(java-mode . ("jdtls")))
-  (add-to-list 'eglot-server-programs '(python-mode . ("pyright-langserver" "--stdio")))))
+  (add-to-list 'eglot-server-programs '(python-mode . ("pyright-langserver" "--stdio"))))
 
 ;; python
 (use-package pyvenv
