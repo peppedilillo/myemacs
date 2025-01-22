@@ -1,3 +1,7 @@
+;; debian 12 does not support emacs 29 which ships eglot
+(use-package eglot
+  :ensure t)
+
 ;; python
 (use-package pyvenv
   :ensure t
