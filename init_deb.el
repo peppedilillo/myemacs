@@ -1,6 +1,8 @@
-;; debian 12 does not support emacs 29 which ships eglot
+;; LSPs
 (use-package eglot
-  :ensure t)
+  :ensure t
+  :config
+  (add-to-list 'eglot-server-programs '(python-mode . ("pyright-langserver" "--stdio"))))
 
 ;; python
 (use-package pyvenv
