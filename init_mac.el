@@ -1,3 +1,7 @@
+;; disable zooming through trackpad
+(global-set-key [C-wheel-up] 'ignore)
+(global-set-key [C-wheel-down] 'ignore)
+
 ;; set alternate modifier to option key on max
 (setq ns-alternate-modifier 'meta)
 
