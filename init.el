@@ -64,6 +64,8 @@
 
 ;; default tab length
 (setq-default tab-width 4)
+;; only use space for indentation
+(setq-default indent-tabs-mode nil)
 
 ;; automatically enables line numbers in prog mode
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
@@ -105,6 +107,10 @@
 
 ;; olivetti write mode
 (use-package olivetti
+  :ensure t)
+
+;; docker
+(use-package dockerfile-mode
   :ensure t)
 
 ;; loads machine-specific init file, if present
