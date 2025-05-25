@@ -14,7 +14,9 @@
   :ensure t
   :config
   (add-to-list 'eglot-server-programs '(java-mode . ("jdtls")))
-  (add-to-list 'eglot-server-programs '(python-mode . ("pyright-langserver" "--stdio"))))
+  (add-to-list 'eglot-server-programs '(python-mode . ("pyright-langserver" "--stdio")))
+  (add-to-list 'eglot-server-programs '(swift-mode . ("sourcekit-lsp")))
+  )
 
 ;; python
 (use-package pyvenv
@@ -44,3 +46,9 @@
 ;; rust
 (use-package rust-mode
   :ensure t)
+
+;; swift
+(use-package swift-mode
+    :ensure t
+    :mode "\\.swift\\'"
+    :interpreter "swift")

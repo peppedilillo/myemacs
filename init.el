@@ -75,6 +75,19 @@
   :ensure t
   :hook (after-init . global-company-mode))
 
+;; powerline
+(use-package powerline
+  :ensure t
+  :config
+  (powerline-default-theme))
+
+;; spaceline
+(use-package spaceline
+  :ensure t
+  :after powerline
+  :config
+  (spaceline-emacs-theme))
+
 ;; typographic ligatures.
 (defconst jetbrains-ligatures
    '("-->" "//" "/**" "/*" "*/" "<!--" ":=" "->>" "<<-" "->" "<-"
@@ -112,6 +125,11 @@
 ;; docker
 (use-package dockerfile-mode
   :ensure t)
+
+;; rainbow delimiters makes nested delimiters easier to understand
+(use-package rainbow-delimiters
+    :ensure t
+    :hook ((prog-mode . rainbow-delimiters-mode)))
 
 ;; loads machine-specific init file, if present
 (defvar mac-custom-file "~/.emacs.d/init_mac.el")
