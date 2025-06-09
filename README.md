@@ -26,10 +26,14 @@ WantedBy=default.target
 And add this function to your .zshrc:
 ```bash
 # emacs client
-emacs() {
+e() {
   emacsclient -c -n "$@"
+}
+emacs() {
+  # `command` avoid recursion
+  command emacs "$@" &
 }
 ```
 At start-up the daemon won't load-file `init.el`.
 Start a client with `emacs` and run: `M-x load ~/.emacs.d/init.el`
-All clients afterwards should retain the style.
+All clients afterwards should retain the style. To start a client use `e file.txt`. You can still load a standalone emacs instance with `emacs file.txt`. The main advantage of going stand-alone is to inherit the environment variables from the terminal.
