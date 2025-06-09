@@ -27,7 +27,7 @@ And add this function to your .zshrc:
 ```bash
 # emacs client
 e() {
-  emacsclient -c -n "$@"
+  emacsclient -c "$@"
 }
 emacs() {
   # `command` avoid recursion

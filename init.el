@@ -10,7 +10,7 @@
 (load-theme 'gruber-darker t)
 
 ;; sets font
-(set-face-attribute 'default nil :font "JetBrains Mono-13" :weight `extralight)
+(set-face-attribute 'default nil :font "JetBrains Mono-12")
 (setq-default line-spacing 0.2)
 
 ;; disables context menubar, toolbar, scrollbar
