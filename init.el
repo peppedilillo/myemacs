@@ -18,10 +18,11 @@
 (toggle-scroll-bar -1)
 (tool-bar-mode -1)
 
-;; load custom splash screen
-(load "~/.emacs.d/loads/splash-screen.el")
-(require 'splash-screen)
-;; or if you grow tired, this disables the splash screen
+;; load custom splash screen if not in daemon
+(unless (daemonp)
+  (load "~/.emacs.d/loads/splash-screen.el")
+  (require 'splash-screen))
+;; or if you grow tired, this disables all splash screen
 ;; (setq inhibit-startup-screen t)
 
 ;; switch audio bell for visual one
@@ -40,6 +41,9 @@
 ;; pixel-scroll-precision-mode was not available prior to emacs 29
 (if (not (version< emacs-version "29"))
   (pixel-scroll-precision-mode 1) nil)
+
+;; fuck-offs auto-revert file
+(global-auto-revert-mode nil)
 
 ;: fuck-offs custom variables to separate file
 (setq custom-file (concat user-emacs-directory "/custom.el"))
