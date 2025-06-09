@@ -23,11 +23,13 @@ Restart=on-failure
 [Install]
 WantedBy=default.target
 ```
-Finally, add this to your .zshrc.
-Usage: `emacs test.txt`
+And add this function to your .zshrc:
 ```bash
 # emacs client
 emacs() {
   emacsclient -c -n "$@"
 }
 ```
+At start-up the daemon won't load-file `init.el`.
+Start a client with `emacs` and run: `M-x load ~/.emacs.d/init.el`
+All clients afterwards should retain the style.
