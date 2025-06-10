@@ -25,15 +25,23 @@ WantedBy=default.target
 ```
 And add this function to your .zshrc:
 ```bash
-# emacs client
+# emacs gui client
 e() {
   emacsclient -c "$@"
 }
+# emacs terminal client
+et() {
+    # TERM definition is needed since many systems do not
+    # recognize ghostty own terminfo yet. the command is
+    # not needed with gnome-terminal and other terminal
+    # emulator. remove in the future.
+  TERM=xterm-256color emacsclient "$@"
+}
+# emacs standalone
 emacs() {
   # `command` avoid recursion
   command emacs "$@" &
 }
 ```
-At start-up the daemon won't load-file `init.el`.
-Start a client with `emacs` and run: `M-x load ~/.emacs.d/init.el`
-All clients afterwards should retain the style. To start a client use `e file.txt`. You can still load a standalone emacs instance with `emacs file.txt`. The main advantage of going stand-alone is to inherit the environment variables from the terminal.
+At start-up the daemon won't load-file `init.el`. To solve this, start a client and run: `M-x load ~/.emacs.d/init.el`. All clients afterwards should retain the style.
+To start a client use `e file.txt`. You can still load a standalone emacs instance with `emacs file.txt`. The main advantage of going stand-alone is to inherit the environment variables from the terminal.
