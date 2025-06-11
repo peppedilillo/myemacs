@@ -45,3 +45,6 @@ emacs() {
 ```
 At start-up the daemon won't load-file `init.el`. To solve this, start a client and run: `M-x load ~/.emacs.d/init.el`. All clients afterwards should retain the style.
 To start a client use `e file.txt`. You can still load a standalone emacs instance with `emacs file.txt`. The main advantage of going stand-alone is to inherit the environment variables from the terminal.
+
+I tested this method on IGOR PC and it works.
+A simpler solution requires just creating an alias like `alias ec='emacsclient -c -a ""'`. The command should automatically start the daemon when first called. 
