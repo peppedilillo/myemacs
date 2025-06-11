@@ -1,3 +1,6 @@
+;; sets font for a big lo-res screen
+(set-face-attribute 'default nil :font "JetBrains Mono-12")
+
 ;; LSPs
 (use-package eglot
   :ensure t

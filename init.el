@@ -9,8 +9,8 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (load-theme 'gruber-darker t)
 
-;; sets font
-(set-face-attribute 'default nil :font "JetBrains Mono-12")
+;; sets generic font specs
+;; more is set in machine specific init module
 (setq-default line-spacing 0.2)
 
 ;; disables context menubar, toolbar, scrollbar

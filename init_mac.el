@@ -1,3 +1,6 @@
+;; font choice on mac
+(set-face-attribute 'default nil :font "JetBrains Mono-13" :weight `light)
+
 ;; disable zooming through trackpad
 (global-set-key [C-wheel-up] 'ignore)
 (global-set-key [C-wheel-down] 'ignore)
