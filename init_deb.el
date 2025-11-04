@@ -22,7 +22,7 @@
 ;; C
 (setq c-default-style "linux" c-basic-offset 4)
 
-;; OpenGL
+;; GLSL
 (use-package glsl-mode
   :ensure t
   :config
