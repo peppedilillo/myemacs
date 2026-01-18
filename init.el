@@ -61,7 +61,7 @@
       '(("\\`/.*/\\([^/]+\\)\\'" "~/.emacs.d/backups/\\1" t)))
 
 ;; cua mode
-(cua-mode t)
+;; (cua-mode t)
 
 ;; enables electric pair mode
 (electric-pair-mode 1)
