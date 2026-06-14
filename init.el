@@ -147,4 +147,6 @@
   (if (file-exists-p deb-custom-file)
       (load deb-custom-file))))
 
-
+;; vterm is a full-fledged terminal emulator for emacs. useful with TUI
+(use-package vterm
+    :ensure t)
