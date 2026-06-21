@@ -7,7 +7,7 @@
 
 ;; adds custome themes  and loads one
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-(load-theme 'gruber-darker t)
+(load-theme 'gruvbox-dark t)
 
 ;; sets generic font specs
 ;; more is set in machine specific init module
@@ -65,6 +65,9 @@
 
 ;; enables electric pair mode
 (electric-pair-mode 1)
+
+;; enables paste and replace selection
+(delete-selection-mode 1)
 
 ;; default tab length
 (setq-default tab-width 4)
