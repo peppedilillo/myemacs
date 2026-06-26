@@ -1,22 +1,43 @@
-;; use-package
+;; package setup
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/"))
 (require 'use-package)
 
-;; MELPA
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+;; separate custom-file output
+(setq custom-file
+      (expand-file-name "custom.el" user-emacs-directory))
+(load custom-file 'noerror 'nomessage)
 
-;; adds custome themes  and loads one
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-(load-theme 'gruvbox-dark t)
+;; custom themes
+(add-to-list 'custom-theme-load-path
+             (expand-file-name "themes/" user-emacs-directory))
 
-;; sets generic font specs
-;; more is set in machine specific init module
-(setq-default line-spacing 0.2)
+;; these GUI handlers are somewhat obscure but needed for daemon
+;; settings applied to every graphical frame
+(add-to-list 'default-frame-alist
+             '(font . "JetBrains Mono-13"))
 
-;; disables context menubar, toolbar, scrollbar
+(defun my-gui-frame-setup (frame)
+  (with-selected-frame frame
+    (when (display-graphic-p frame)
+      (unless (custom-theme-enabled-p 'gruvbox-dark)
+        (load-theme 'gruvbox-dark t)))))
+
+(add-hook 'after-make-frame-functions #'my-gui-frame-setup)
+
+(unless (daemonp)
+  (my-gui-frame-setup (selected-frame)))
+
+;; UI
 (menu-bar-mode -1)
-(toggle-scroll-bar -1)
+(scroll-bar-mode -1)
 (tool-bar-mode -1)
+(when (fboundp 'pixel-scroll-precision-mode)
+  (pixel-scroll-precision-mode 1))
+
+;; fuck off  auto-revert
+(global-auto-revert-mode -1)
 
 ;; load custom splash screen if not in daemon
 (unless (daemonp)
@@ -35,20 +56,9 @@
     (run-with-timer (* 2 flash-sec) nil #'invert-face 'mode-line)
     (run-with-timer (* 3 flash-sec) nil #'invert-face 'mode-line)))
 
-;; all themes are considered safe
-(setq custom-safe-themes t)
-
-;; pixel-scroll-precision-mode was not available prior to emacs 29
-(if (not (version< emacs-version "29"))
-  (pixel-scroll-precision-mode 1) nil)
-
-;; fuck-offs auto-revert file
-(global-auto-revert-mode nil)
-
-;: fuck-offs custom variables to separate file
-(setq custom-file (concat user-emacs-directory "/custom.el"))
-
 ;; backups to backups dir
+(make-directory
+     (expand-file-name "backups/" user-emacs-directory) t)
 (setq backup-directory-alist
       '(("." . "~/.emacs.d/backups/")))
 
@@ -84,11 +94,8 @@
 
 ;; powerline
 (use-package powerline
-  :ensure t
-  :config
-  (powerline-default-theme))
+  :ensure t)
 
-;; spaceline
 (use-package spaceline
   :ensure t
   :after powerline
@@ -150,6 +157,3 @@
   (if (file-exists-p deb-custom-file)
       (load deb-custom-file))))
 
-;; vterm is a full-fledged terminal emulator for emacs. useful with TUI
-(use-package vterm
-    :ensure t)
