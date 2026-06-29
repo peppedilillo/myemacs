@@ -102,6 +102,15 @@
   :config
   (spaceline-emacs-theme))
 
+;; markdown mode
+(use-package markdown-mode
+  :ensure t
+  :mode (("\\.md\\'" . markdown-mode)
+         ;; open README.md files as github-flavored markdown
+         ("README\\.md\\'" . gfm-mode))
+  :hook ((markdown-mode . olivetti-mode)
+         (gfm-mode . olivetti-mode)))
+
 ;; typographic ligatures.
 (defconst jetbrains-ligatures
    '("-->" "//" "/**" "/*" "*/" "<!--" ":=" "->>" "<<-" "->" "<-"
@@ -156,4 +165,3 @@
  ((eq system-type 'gnu/linux)
   (if (file-exists-p deb-custom-file)
       (load deb-custom-file))))
-
