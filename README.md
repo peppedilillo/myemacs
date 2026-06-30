@@ -10,6 +10,7 @@ To enable the LSP, `M-x eglot`.
 # Daemon-Client
 
 ## On Linux
+
 Create the user service:
 
 ```text
@@ -52,7 +53,6 @@ systemctl --user list-units --type=service --all | grep emacs
 ps aux | grep '[e]macs'
 ```
 
-
 Add to `~/.zshrc`:
 
 ```shell
@@ -73,34 +73,11 @@ et() {
 }
 ```
 
-Reload the shell configuration:
-
-```shell
-source ~/.zshrc
-```
-
-Open a graphical client:
-
-```shell
-e file.txt
-```
-
-Open a terminal client:
-
-```shell
-et file.txt
-```
-
-Start an independent Emacs process:
-
-```shell
-emacs file.txt
-```
-
 
 ## On MacOS:
 
 Create `~/Library/LaunchAgents/org.gnu.emacs.daemon.plist` with content:
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
@@ -130,7 +107,9 @@ Create `~/Library/LaunchAgents/org.gnu.emacs.daemon.plist` with content:
 </dict>
 </plist>
 ```
+
 Start the daemon and enable it:
+
 ```shell
 launchctl bootstrap gui/$(id -u) \
   ~/Library/LaunchAgents/org.gnu.emacs.daemon.plist
