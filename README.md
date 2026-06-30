@@ -6,48 +6,96 @@ For java you should install jdtls.
 
 To enable the LSP, `M-x eglot`.
 
+
 # Daemon-Client
 
 ## On Linux
+Create the user service:
 
-Run `systemctl --user enable --now emacs`. Then, create the next service file:
-```txt
+```text
+~/.config/systemd/user/emacs.service
+```
+
+with:
+
+```ini
 [Unit]
-Description=Emacs text editor
-Documentation=info:emacs man:emacs(1) https://gnu.org/software/emacs/
+Description=Emacs text editor daemon
+Documentation=info:emacs man:emacs(1)
 
 [Service]
-Type=forking
-ExecStart=/usr/bin/emacs --daemon
+Type=exec
+ExecStart=/usr/bin/emacs --fg-daemon
 ExecStop=/usr/bin/emacsclient --eval "(kill-emacs)"
-#Environment=SSH_AUTH_SOCK=%t/keyring/ssh
 Restart=on-failure
 
 [Install]
 WantedBy=default.target
 ```
-And add this function to your .zshrc:
+
+Load and start it:
+
 ```shell
-# emacs standalone
+systemctl --user daemon-reload
+systemctl --user enable --now emacs.service
+
+# you can restart with 
+# systemctl --user daemon-reload
+# systemctl --user restart emacs.service
+```
+
+Check the service and process:
+
+```shell
+systemctl --user status emacs.service
+systemctl --user list-units --type=service --all | grep emacs
+ps aux | grep '[e]macs'
+```
+
+
+Add to `~/.zshrc`:
+
+```shell
+# Independent standalone Emacs process
 emacs() {
-  # `command` avoid recursion
-  command emacs "@" 2>/dev/null &
+  # `command` avoids calling this function recursively.
+  command emacs "$@" &!
 }
 
-# emacs gui client
+# Graphical daemon client
 e() {
-  emacsclient -c -n "$@"
+  emacsclient --create-frame --no-wait "$@"
 }
 
-# emacs terminal client
+# Terminal daemon client
 et() {
-  TERM=xterm-256color emacsclient -t "$@"
+  TERM=xterm-256color emacsclient --tty "$@"
 }
 ```
-At start-up the daemon won't load-file `init.el`. To solve this, start a client and run: `M-x load ~/.emacs.d/init.el`. All clients afterwards should retain the style.
-To start a client use `e file.txt`. You can still load a standalone emacs instance with `emacs file.txt`. The main advantage of going stand-alone is to inherit the environment variables from the terminal.
 
-I tested this method on IGOR PC and it works there.
+Reload the shell configuration:
+
+```shell
+source ~/.zshrc
+```
+
+Open a graphical client:
+
+```shell
+e file.txt
+```
+
+Open a terminal client:
+
+```shell
+et file.txt
+```
+
+Start an independent Emacs process:
+
+```shell
+emacs file.txt
+```
 
 
 ## On MacOS:
