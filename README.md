@@ -25,24 +25,26 @@ Description=Emacs text editor daemon
 Documentation=info:emacs man:emacs(1)
 
 [Service]
-Type=exec
+Type=notify
 ExecStart=/usr/bin/emacs --fg-daemon
-ExecStop=/usr/bin/emacsclient --eval "(kill-emacs)"
+SuccessExitStatus=15
 Restart=on-failure
 
 [Install]
 WantedBy=default.target
 ```
 
-Load and start it:
+Load and start it **from a terminal inside the graphical session**:
 
 ```shell
 systemctl --user daemon-reload
+systemctl --user import-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY
 systemctl --user enable --now emacs.service
 
-# you can restart with 
-# systemctl --user daemon-reload
+# you can restart with
+# systemctl --user import-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY
 # systemctl --user restart emacs.service
+# restarting in this way you can lose unsaved buffers
 ```
 
 Check the service and process:
@@ -64,15 +66,16 @@ emacs() {
 
 # Graphical daemon client
 e() {
-  emacsclient --create-frame --no-wait "$@"
+  emacsclient --create-frame --no-wait --timeout=10 "$@"
 }
 
 # Terminal daemon client
 et() {
-  TERM=xterm-256color emacsclient --tty "$@"
+  emacsclient --tty --timeout=10 "$@"
 }
 ```
 
+---------
 
 ## On MacOS:
 
