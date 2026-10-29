@@ -76,7 +76,14 @@
 ;; enables electric pair mode
 (electric-pair-mode 1)
 
-;; enables paste and replace selection
+;; multiple cursors
+(use-package multiple-cursors
+  :ensure t
+  :bind (("C->" . mc/mark-next-like-this)     ; Add next cursor
+         ("C-<" . mc/mark-previous-like-this) ; Add previous cursor
+         ("C-c C-v" . mc/edit-lines)))        ; Vertical cursors on selected lines
+
+;; Enables paste and replace selection
 (delete-selection-mode 1)
 
 ;; default tab length
