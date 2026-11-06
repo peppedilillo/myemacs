@@ -99,6 +99,9 @@ Create `~/Library/LaunchAgents/org.gnu.emacs.daemon.plist` with content:
   <key>RunAtLoad</key>
   <true/>
 
+  <key>KeepAlive</key>
+  <true/>
+
   <key>LimitLoadToSessionType</key>
   <string>Aqua</string>
 
@@ -117,6 +120,23 @@ Start the daemon and enable it:
 launchctl bootstrap gui/$(id -u) \
   ~/Library/LaunchAgents/org.gnu.emacs.daemon.plist
 ```
+
+`KeepAlive` restarts the daemon after crashes and normal exits, including
+Cmd+Q. Restarting does not restore unsaved changes. launchd throttles repeated
+starts to avoid a rapid restart loop.
+
+After changing an already loaded plist, save your work and reload the service
+(this closes existing Emacs frames):
+
+```shell
+launchctl bootout gui/$(id -u)/org.gnu.emacs.daemon
+launchctl bootstrap gui/$(id -u) \
+  ~/Library/LaunchAgents/org.gnu.emacs.daemon.plist
+```
+
+To deliberately stop the daemon, use the `bootout` command above; use
+`bootstrap` to enable it again. Close individual client frames with `C-x C-c`.
+
 Add to `~/.zshrc`:
 ```shell
 # fix paths as needed, these are the brew deafult
