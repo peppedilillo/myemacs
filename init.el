@@ -36,8 +36,9 @@
 (when (fboundp 'pixel-scroll-precision-mode)
   (pixel-scroll-precision-mode 1))
 
-;; fuck off  auto-revert
-(global-auto-revert-mode -1)
+;; hot reloads changes to files and directories
+(global-auto-revert-mode 1)
+(setq global-auto-revert-non-file-buffers t)
 
 ;; load custom splash screen if not in daemon
 (unless (daemonp)
@@ -161,9 +162,11 @@
     :ensure t
     :hook ((prog-mode . rainbow-delimiters-mode)))
 
-;; loads machine-specific init file, if present
-(defvar mac-custom-file "~/.emacs.d/init_mac.el")
-(defvar deb-custom-file "~/.emacs.d/init_deb.el")
+;; loads machine-specific init files, if present
+(defvar mac-custom-file
+  (expand-file-name "inits/init_mac.el" user-emacs-directory))
+(defvar deb-custom-file
+  (expand-file-name "inits/init_deb.el" user-emacs-directory))
 
 (cond
  ((eq system-type 'darwin)
@@ -172,3 +175,4 @@
  ((eq system-type 'gnu/linux)
   (if (file-exists-p deb-custom-file)
       (load deb-custom-file))))
+
