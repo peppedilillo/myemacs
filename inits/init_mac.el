@@ -27,4 +27,4 @@
 (load (expand-file-name "inits/init_rust.el" user-emacs-directory))
 (load (expand-file-name "inits/init_swift.el" user-emacs-directory))
 (load (expand-file-name "inits/init_glsl.el" user-emacs-directory))
-
+(load (expand-file-name "inits/init_sicp.el" user-emacs-directory))
